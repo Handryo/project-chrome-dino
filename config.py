@@ -1,9 +1,15 @@
 import pygame
 
-Largura = 800
-Altura = 700
+width = 800
+height = 700
 
-BRANCO = (255, 255, 255)
-relogio = pygame.time.Clock()
-chao_1 = pygame.image.load("Sprite/chao_sprite_1.png")
-chao_2 = pygame.image.load("Sprite/chao_sprite_2.png")
+# Colors
+white = (255, 255, 255)
+
+# Clock
+clock = pygame.time.Clock()
+
+# Sprites
+sprite_dino = pygame.image.load("img/Dino.png")  # Dino
+sprite_cloud = pygame.image.load("img/Cloud_sprite.png")  # Cloud
+
