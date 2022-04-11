@@ -1,20 +1,22 @@
 import pygame.sprite
-from config import height, width
-
+from config import width, height, sprite_floor
 
 class Floor(pygame.sprite.Sprite):
-    def __init__(self, floor, pos_x):
-        super().__init__()
-        self.ticks = None
-        self.image = floor
-        self.image = pygame.transform.scale(self.image, (32*3, 32*3))
+    def __init__(self, pos_x):
+        pygame.sprite.Sprite.__init__(self)
+        self.pos_x = pos_x
+        self.image_floor = []
+        for s in range(4):
+            img = sprite_floor.subsurface((s * 32, 0), (32, 32))
+            img = pygame.transform.scale(img, (32 * 2, 32 * 2))
+            self.image_floor.append(img)
+        self.index_list = 0
+        self.image = self.image_floor[self.index_list]
         self.rect = self.image.get_rect()
-        self.rect.x = pos_x * 96
-        self.rect.y = height - 96
+        self.rect.x = self.pos_x * 64
+        self.rect.y = height - 64
 
     def update(self):
-        self.ticks = pygame.time.get_ticks()
-        self.rect.x = self.rect.x - 5
-        if self.rect.x < -96:
-            self.rect.x = width + 96
-            
+        if self.rect.topright[0] < 0:
+            self.rect.x = width
+        self.rect.x -= 10
