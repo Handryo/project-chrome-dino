@@ -1,6 +1,6 @@
 import pygame.sprite
 from random import randrange
-from config import sprite_cactus, width, height
+from config import sprite_cactus, width, height, game_vel
 
 
 class Cactus(pygame.sprite.Sprite):
@@ -23,4 +23,4 @@ class Cactus(pygame.sprite.Sprite):
             self.index_list = randrange(0, 7, 1)
             self.rect.x = randrange(640, 1000, 45)
         self.image = self.image_cactus[self.index_list]
-        self.rect.x -= 10
+        self.rect.x -= game_vel

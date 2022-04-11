@@ -1,5 +1,5 @@
 import pygame.sprite
-from config import sprite_cloud, width
+from config import sprite_cloud, width, cloud_vel
 from random import randrange
 
 
@@ -16,5 +16,5 @@ class Cloud(pygame.sprite.Sprite):
         if self.rect.topright[0] < 0:
             self.rect.x = width
             self.rect.y = randrange(50, 400, 50)
-        self.rect.x -= 4
+        self.rect.x -= cloud_vel
         

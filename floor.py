@@ -1,5 +1,5 @@
 import pygame.sprite
-from config import width, height, sprite_floor
+from config import width, height, sprite_floor, game_vel
 
 
 class Floor(pygame.sprite.Sprite):
@@ -20,4 +20,4 @@ class Floor(pygame.sprite.Sprite):
     def update(self):
         if self.rect.topright[0] < 10:
             self.rect.x = width
-        self.rect.x -= 10
+        self.rect.x -= game_vel
