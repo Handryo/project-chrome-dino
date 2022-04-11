@@ -6,7 +6,6 @@ class Ptera(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image_ptera = []
-
         self.img1 = sprite_dino_fly.subsurface((0, 0), (32, 32))
         self.img2 = sprite_dino_fly.subsurface((32, 0), (32, 32))
         self.img_1 = pygame.transform.scale(self.img1, (32 * 2, 32 * 2))
@@ -22,7 +21,7 @@ class Ptera(pygame.sprite.Sprite):
     def update(self):
         if self.rect.topright[0] < -1000:
             self.rect.x = width
-        self.rect.x -= 9
+        self.rect.x -= 8
         if self.index_list > 1:
             self.index_list = 0
         self.index_list += 0.25
