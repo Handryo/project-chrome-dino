@@ -5,6 +5,7 @@ from config import *
 from dino import *
 from floor import *
 from mensages import *
+from dino_fly import *
 
 
 def restart_game():
@@ -34,6 +35,10 @@ for c in range(4):
 for f in range(640 * 2 // 64):
     floor = Floor(f)
     all_sprites.add(floor)
+
+dino_fly = Ptera()
+all_sprites.add(dino_fly)
+obstacles_group.add(dino_fly)
 
 collision = False
 while True:

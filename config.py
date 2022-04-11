@@ -12,6 +12,7 @@ black = (0, 0, 0)
 clock = pygame.time.Clock()
 
 # Sprites
+sprite_dino_fly = pygame.image.load("img/Obstacle_Dino.png")  # Dino
 sprite_dino = pygame.image.load("img/Dino.png")  # Dino
 sprite_cloud = pygame.image.load("img/Cloud_sprite.png")  # Cloud
 sprite_floor = pygame.image.load("img/Floor_sprite.png")  # Floor
