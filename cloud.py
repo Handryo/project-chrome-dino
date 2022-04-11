@@ -1,13 +1,13 @@
 import pygame.sprite
-from config import sprite_cloud, width, cloud_vel
+from config import width, cloud_vel
 from random import randrange
 
 
 class Cloud(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, sprite):
         pygame.sprite.Sprite.__init__(self)
-        img = sprite_cloud
-        self.image = pygame.transform.scale(img, (32 * 2, 32 * 2))
+        self.sprite = sprite
+        self.image = pygame.transform.scale(sprite, (32 * 2, 32 * 2))
         self.rect = self.image.get_rect()
         self.rect.x = width - randrange(30, 400, 50)
         self.rect.y = randrange(50, 400, 50)

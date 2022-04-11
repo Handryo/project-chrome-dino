@@ -1,14 +1,15 @@
 import pygame.sprite
 import pygame
-from config import sprite_dino, all_sprites
+from config import all_sprites, sprite_dino
 
 
 class Dino(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image_dino = []
+        self.sprite = sprite
         for i in range(6):
-            img = sprite_dino.subsurface((i * 32, 0), (32, 32))
+            img = sprite.subsurface((i * 32, 0), (32, 32))
             img = pygame.transform.scale(img, (32 * 2, 32 * 2))
             self.image_dino.append(img)
         self.index_list = 0
@@ -60,5 +61,5 @@ class Dino(pygame.sprite.Sprite):
             self.image = self.image_dino[int(self.index_list)]
 
 
-dino = Dino()
+dino = Dino(sprite_dino)
 all_sprites.add(dino)

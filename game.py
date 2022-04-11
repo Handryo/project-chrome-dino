@@ -15,12 +15,11 @@ class Game:
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Dino run")
 
-    Dino = Dino()
+    Dino = Dino(sprite_dino)
     Messages = Messages()
 
     game_over = Messages.show_text('GAME OVER', 35, black)
     close = Messages.show_text('Press "x" to close the Game', 20, black)
-
 
     for ct in range(2):
         cactus = Cactus()
@@ -28,14 +27,14 @@ class Game:
         obstacles_group.add(cactus)
 
     for c in range(4):
-        cloud = Cloud()
+        cloud = Cloud(sprite_cloud)
         all_sprites.add(cloud)
 
     for f in range(640 * 2 // 64):
-        floor = Floor(f)
+        floor = Floor(f, sprite_floor)
         all_sprites.add(floor)
 
-    dino_fly = Ptera()
+    dino_fly = Ptera(sprite_dino_fly)
     all_sprites.add(dino_fly)
     obstacles_group.add(dino_fly)
 

@@ -1,14 +1,15 @@
 import pygame.sprite
-from config import width, height, sprite_floor, game_vel
+from config import width, height, game_vel
 
 
 class Floor(pygame.sprite.Sprite):
-    def __init__(self, pos_x):
+    def __init__(self, pos_x, sprite):
         pygame.sprite.Sprite.__init__(self)
         self.pos_x = pos_x
         self.image_floor = []
+        self.sprite = sprite
         for s in range(4):
-            img = sprite_floor.subsurface((s * 32, 0), (32, 32))
+            img = sprite.subsurface((s * 32, 0), (32, 32))
             img = pygame.transform.scale(img, (32 * 2, 32 * 2))
             self.image_floor.append(img)
         self.index_list = 0
