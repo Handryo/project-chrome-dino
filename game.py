@@ -1,26 +1,42 @@
+from pygame import *
+from cloud import *
 from config import *
-from floor import *
 from dino import *
+from floor import *
+
 pygame.init()
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Dino run")
 
-#for i in range(width * 3 // 96):
-    #chao_ = Floor(chao_1, i)
-    #todas_as_sprites.add(chao_)
-
 Dino = Dino()
+
+for c in range(4):
+    cloud = Cloud()
+    all_sprites.add(cloud)
+
+for f in range(640 * 2 // 64):
+    floor = Floor(f)
+    all_sprites.add(floor)
 
 while True:
     clock.tick(30)
     screen.fill(white)
-    for e in pygame.event.get():
-        if e.type == pygame.QUIT:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
             exit()
+        if event.type == KEYDOWN:
+            if event.key == K_SPACE:
+                if dino.rect.y != 508:
+                    pass
+                else:
+                    dino.leap()
+
+    if key.get_pressed()[K_DOWN]:
+        dino.duck()
+    else:
+        if dino.down:
+            dino.undunking()
+
     all_sprites.draw(screen)
     all_sprites.update()
-    #todas_as_sprites.draw(tela)
-    #todas_as_sprites.update()
     pygame.display.flip()
-
-
