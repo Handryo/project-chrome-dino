@@ -1,22 +1,25 @@
-import pygame
 import pygame.sprite
+import pygame
 from config import sprite_dino, all_sprites
+
 
 class Dino(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image_dino = []
-        for i in range(5):
+        for i in range(6):
             img = sprite_dino.subsurface((i * 32, 0), (32, 32))
             img = pygame.transform.scale(img, (32 * 2, 32 * 2))
             self.image_dino.append(img)
         self.index_list = 0
         self.image = self.image_dino[self.index_list]
         self.rect = self.image.get_rect()
+        self.mask = pygame.mask.from_surface(self.image)
         self.rect.x = 100
         self.rect.y = 508
         self.jump = False
         self.down = False
+        self.end = False
 
     def leap(self):
         self.jump = True
@@ -26,6 +29,10 @@ class Dino(pygame.sprite.Sprite):
 
     def undunking(self):
         self.down = False
+
+    def dead(self):
+        self.index_list = 5
+        self.image = self.image_dino[self.index_list]
 
     def update(self):
         # Dino leap
